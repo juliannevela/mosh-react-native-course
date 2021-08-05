@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "mosh_demo",
-    "slug": "mosh_demo",
+    "name": "mosh-react-native",
+    "slug": "mosh-react-native",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -13,9 +13,7 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
@@ -27,6 +25,7 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "Working through the React Native Series course from Mosh."
   }
 }

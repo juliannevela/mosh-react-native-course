@@ -1,5 +1,5 @@
+# Ignore Artifacts
 node_modules/
-.yarn/
 .expo/
 npm-debug.*
 *.jks
