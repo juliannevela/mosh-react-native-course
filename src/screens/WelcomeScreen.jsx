@@ -8,12 +8,14 @@ import {
     Image,
 } from 'react-native';
 
+import colors from '../config/colors';
+
 export default function WelcomeScreen() {
     return (
         <View style={styles.container}>
             <ImageBackground
                 source={require('../assets/background.jpg')}
-                style={{ width: '100%', height: '100%' }}
+                style={styles.background}
             >
                 <View style={styles.logoContainer}>
                     <Image
@@ -34,6 +36,11 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingTop: Platform.OS === 'android' ? 25 : 0,
     },
+    background: {
+        width: '100%',
+        height: '100%',
+        justifyContent: 'flex-end',
+    },
     logoContainer: {
         flex: 1,
         alignItems: 'center',
@@ -52,11 +59,11 @@ const styles = StyleSheet.create({
     loginBtn: {
         width: '100%',
         height: 60,
-        backgroundColor: '#FC5C65',
+        backgroundColor: colors.primary,
     },
     regBtn: {
         width: '100%',
         height: 60,
-        backgroundColor: '#4ECDC4',
+        backgroundColor: colors.secondary,
     },
 });
