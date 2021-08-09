@@ -1,13 +1,13 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 export default function StylingModule() {
     return (
         <View style={styles.container}>
-            <View style={styles.inner}>
-                <View style={styles.innerInner} />
-            </View>
-            <View style={styles.inner2} />
+            <Text style={styles.inner}>
+                I love React Native! This is my first React Native app. This is
+                going to be really awesome when it's finished being built!'
+            </Text>
         </View>
     );
 }
@@ -19,23 +19,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     inner: {
-        backgroundColor: '#FFFF00',
-        width: 100,
-        height: 100,
-        elevation: 50,
-        padding: 20,
-        paddingHorizontal: 10,
-    },
-    innerInner: {
-        backgroundColor: 'orange',
-        width: 50,
-        height: 50,
-        elevation: 50,
-    },
-    inner2: {
-        backgroundColor: '#00FFFF',
-        width: 100,
-        height: 100,
-        elevation: 50,
+        fontSize: 20,
+        fontFamily: 'Roboto',
+        fontStyle: 'italic',
+        fontWeight: 'bold',
+        color: '#FF00FF',
+        textTransform: 'capitalize',
+        textAlign: 'center',
     },
 });
