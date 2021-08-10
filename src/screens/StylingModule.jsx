@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-import AppText from '../components/AppText.android';
+import AppText from '../components/AppText';
 
 export default function StylingModule() {
     return (
