@@ -1,12 +1,14 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-import AppText from '../components/AppText';
+import AppText from '../components/AppText.android';
 
 export default function StylingModule() {
     return (
         <View style={styles.container}>
-            <AppText style={styles.inner}>I love React Native!</AppText>
+            <AppText>I love React Native!</AppText>
+            <MaterialCommunityIcons name="email" size={60} color="orange" />
         </View>
     );
 }
@@ -16,9 +18,5 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-    },
-    inner: {
-        fontSize: 20,
-        fontFamily: 'Roboto',
     },
 });
