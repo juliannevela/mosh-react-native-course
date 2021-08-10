@@ -8,13 +8,16 @@ import {
     Image,
 } from 'react-native';
 
+import Button from '../components/Button/Button';
 import colors from '../config/colors';
 
 export default function WelcomeScreen() {
+    const handlePress = () => console.log('Welcome Screen Pressed!');
     return (
         <View style={styles.container}>
             <ImageBackground
                 source={require('../assets/background.jpg')}
+                blurRadius={1.5}
                 style={styles.background}
             >
                 <View style={styles.logoContainer}>
@@ -24,8 +27,16 @@ export default function WelcomeScreen() {
                     />
                     <Text style={styles.text}>Sell What You Don't Want</Text>
                 </View>
-                <View style={styles.loginBtn} />
-                <View style={styles.regBtn} />
+                <Button
+                    title="Login"
+                    onPress={handlePress}
+                    backgroundColor={colors.primary}
+                />
+                <Button
+                    title="Register"
+                    onPress={handlePress}
+                    backgroundColor={colors.secondary}
+                />
             </ImageBackground>
         </View>
     );
@@ -39,12 +50,12 @@ const styles = StyleSheet.create({
     background: {
         width: '100%',
         height: '100%',
-        justifyContent: 'flex-end',
+        alignItems: 'center',
     },
     logoContainer: {
         flex: 1,
         alignItems: 'center',
-        marginTop: 25,
+        marginTop: 45,
     },
     logo: {
         width: 100,
@@ -52,18 +63,9 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
     },
     text: {
+        marginTop: 20,
         fontSize: 16,
         color: '#000',
         textAlign: 'center',
-    },
-    loginBtn: {
-        width: '100%',
-        height: 60,
-        backgroundColor: colors.primary,
-    },
-    regBtn: {
-        width: '100%',
-        height: 60,
-        backgroundColor: colors.secondary,
     },
 });

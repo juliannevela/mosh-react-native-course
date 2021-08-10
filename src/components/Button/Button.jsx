@@ -15,16 +15,16 @@ export default function Button({ title, onPress, backgroundColor }) {
 
 const styles = StyleSheet.create({
     button: {
-        flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        width: '100%',
+        width: '90%',
         height: 50,
-        borderRadius: 20,
+        borderRadius: 30,
+        margin: 10,
         backgroundColor: colors.primary,
     },
     text: {
-        fontSize: 20,
+        fontSize: 18,
         fontFamily: Platform.OS === 'ios' ? 'System' : 'Roboto',
         textTransform: 'uppercase',
         textAlign: 'center',
