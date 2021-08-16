@@ -1,15 +1,18 @@
 import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
+import colors from '../../config/colors';
 
 export default function CardComp({ title, subTitle, image }) {
     // const imageSrc = require(`../../assets/${image}`);
     // console.log(imageSrc);
     return (
-        <View style={{ backgroundColor: '#f8f4f4' }}>
+        <View style={styles.container}>
             <View style={styles.card}>
                 <Image source={image} style={styles.cardImage} />
-                <Text style={styles.title}>{title}</Text>
-                <Text style={styles.subTitle}>{subTitle}</Text>
+                <View style={styles.details}>
+                    <Text style={styles.title}>{title}</Text>
+                    <Text style={styles.subTitle}>{subTitle}</Text>
+                </View>
             </View>
         </View>
     );
@@ -17,27 +20,44 @@ export default function CardComp({ title, subTitle, image }) {
 
 const styles = StyleSheet.create({
     card: {
-        height: 200,
-        width: '80%',
+        height: '30%',
+        width: '90%',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#fff',
-        borderRadius: 5,
-        padding: 10,
-        marginBottom: 10,
+        borderRadius: 10,
+        marginVertical: 10,
     },
     cardImage: {
-        width: 100,
-        height: 100,
+        flex: 2,
+        width: '100%',
+        resizeMode: 'cover',
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10,
+    },
+    container: {
+        flex: 1,
+        flexDirection: 'column',
+        alignItems: 'center',
+        backgroundColor: '#f8f4f4',
+    },
+    details: {
+        flex: 1,
+        width: '100%',
+        padding: 10,
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        justifyContent: 'center',
     },
     title: {
-        fontSize: 20,
+        fontSize: 14,
+        fontFamily: 'Roboto',
         fontWeight: 'bold',
         color: '#000',
     },
     subTitle: {
         fontSize: 12,
-        color: '#999',
+        color: colors.secondary,
     },
 });

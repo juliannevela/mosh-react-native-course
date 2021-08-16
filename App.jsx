@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Platform, StyleSheet, View } from 'react-native';
 import CardComp from './src/components/Card/CardComp';
 import WelcomeScreen from './src/screens/WelcomeScreen';
 
@@ -21,7 +21,8 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'center',
-        alignItems: 'center',
+        // alignItems: 'center',
+        marginTop: Platform.OS === 'android' ? 25 : 0,
         backgroundColor: '#fff',
     },
 });
