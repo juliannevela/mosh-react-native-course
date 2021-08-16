@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
-import colors from '../../config/colors';
+import colors from '../config/colors';
 
 export default function Seller({ avatar, name, listings }) {
     return (

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
-import Seller from '../components/Seller/Seller';
+import Seller from '../components/Seller';
 import colors from '../config/colors';
 
 export default function ListingDetailScreen() {
