@@ -1,16 +1,20 @@
 import React from 'react';
-import { Platform, StyleSheet, View } from 'react-native';
+import { Platform, SafeAreaView, StyleSheet, View } from 'react-native';
+import GlobalStyles from './src/config/GlobalStyles';
 
+import MessagesScreen from './src/screens/MessagesScreen';
 // import CardComp from './src/components/CardComp';
 // import ListingDetailScreen from './src/screens/ListingDetailScreen';
-import ViewImageScreen from './src/screens/ViewImageScreen';
+// import ViewImageScreen from './src/screens/ViewImageScreen';
 // import WelcomeScreen from './src/screens/WelcomeScreen';
 
 export default function App() {
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={GlobalStyles.droidSafeArea}>
+            <MessagesScreen />
+
             {/* <WelcomeScreen /> */}
-            <ViewImageScreen />
+            {/* <ViewImageScreen /> */}
             {/* <CardComp
                 title="Red jacket for sale!"
                 subTitle="$200"
@@ -22,7 +26,7 @@ export default function App() {
                 image={require('./src/assets/couch.jpg')}
             /> */}
             {/* <ListingDetailScreen /> */}
-        </View>
+        </SafeAreaView>
     );
 }
 
