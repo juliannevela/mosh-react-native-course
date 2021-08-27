@@ -2,15 +2,15 @@ import React from 'react';
 import { Platform, StyleSheet, View } from 'react-native';
 
 // import CardComp from './src/components/CardComp';
-import ListingDetailScreen from './src/screens/ListingDetailScreen';
-// import ViewImageScreen from './src/screens/ViewImageScreen';
+// import ListingDetailScreen from './src/screens/ListingDetailScreen';
+import ViewImageScreen from './src/screens/ViewImageScreen';
 // import WelcomeScreen from './src/screens/WelcomeScreen';
 
 export default function App() {
     return (
         <View style={styles.container}>
             {/* <WelcomeScreen /> */}
-            {/* <ViewImageScreen /> */}
+            <ViewImageScreen />
             {/* <CardComp
                 title="Red jacket for sale!"
                 subTitle="$200"
@@ -21,20 +21,17 @@ export default function App() {
                 subTitle="$250"
                 image={require('./src/assets/couch.jpg')}
             /> */}
-            <ListingDetailScreen />
+            {/* <ListingDetailScreen /> */}
         </View>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#f8f4f4',
-        padding: 20,
-        paddingTop: 100,
-        //     flex: 1,
-        //     flexDirection: 'row',
-        //     justifyContent: 'center',
-        //     marginTop: Platform.OS === 'android' ? 25 : 0,
-        //     backgroundColor: '#fff',
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        marginTop: Platform.OS === 'android' ? 25 : 0,
+        backgroundColor: '#fff',
     },
 });

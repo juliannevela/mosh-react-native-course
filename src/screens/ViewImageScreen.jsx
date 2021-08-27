@@ -10,14 +10,14 @@ export default function ViewImageScreen() {
             <MaterialCommunityIcons
                 style={styles.backBtn}
                 name="close"
-                size={50}
-                color="white"
+                size={35}
+                color={colors.white}
             />
             <MaterialCommunityIcons
                 style={styles.deleteBtn}
                 name="trash-can-outline"
-                size={50}
-                color="white"
+                size={35}
+                color={colors.white}
             />
             <Image
                 style={styles.image}
