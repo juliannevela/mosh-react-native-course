@@ -1,18 +1,16 @@
 import React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
+
 import colors from '../config/colors';
+import AppText from './AppText';
 
 export default function CardComp({ title, subTitle, image }) {
-    // const imageSrc = require(`../../assets/${image}`);
-    // console.log(imageSrc);
     return (
-        <View style={styles.container}>
-            <View style={styles.card}>
-                <Image source={image} style={styles.cardImage} />
-                <View style={styles.details}>
-                    <Text style={styles.title}>{title}</Text>
-                    <Text style={styles.subTitle}>{subTitle}</Text>
-                </View>
+        <View style={styles.card}>
+            <Image source={image} style={styles.cardImage} />
+            <View style={styles.details}>
+                <AppText style={styles.title}>{title}</AppText>
+                <AppText style={styles.subTitle}>{subTitle}</AppText>
             </View>
         </View>
     );
@@ -20,44 +18,23 @@ export default function CardComp({ title, subTitle, image }) {
 
 const styles = StyleSheet.create({
     card: {
-        height: '30%',
-        width: '90%',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#fff',
-        borderRadius: 10,
-        marginVertical: 10,
+        borderRadius: 15,
+        backgroundColor: colors.white,
+        marginBottom: 20,
+        overflow: 'hidden',
     },
     cardImage: {
-        flex: 2,
         width: '100%',
-        resizeMode: 'cover',
-        borderTopLeftRadius: 10,
-        borderTopRightRadius: 10,
-    },
-    container: {
-        flex: 1,
-        flexDirection: 'column',
-        alignItems: 'center',
-        backgroundColor: '#f8f4f4',
+        height: 200,
     },
     details: {
-        flex: 1,
-        width: '100%',
-        padding: 10,
-        flexDirection: 'column',
-        alignItems: 'flex-start',
-        justifyContent: 'center',
+        padding: 20,
     },
     title: {
-        fontSize: 14,
-        fontFamily: 'Roboto',
-        fontWeight: 'bold',
-        color: '#000',
+        marginBottom: 7,
     },
     subTitle: {
-        fontSize: 12,
+        fontWeight: 'bold',
         color: colors.secondary,
     },
 });

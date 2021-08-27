@@ -1,60 +1,52 @@
 import React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
-import Seller from '../components/Seller';
+import { Image, StyleSheet, View } from 'react-native';
+
+import ListItem from '../components/ListItem';
 import colors from '../config/colors';
+import AppText from '../components/AppText';
 
 export default function ListingDetailScreen() {
-    // Listing Detail:
-    // Item Image
-    // Item Title
-    // Item Description + Price
-    // Seller Name
-    // Seller Avatar
-    // Seller Listings
-
     return (
-        <View style={styles.listing}>
+        <View>
             <Image
                 source={require('../assets/jacket.jpg')}
                 style={styles.image}
             />
             <View style={styles.details}>
-                <Text style={styles.title}>Red jacket for sale!</Text>
-                <Text style={styles.subTitle}>$100</Text>
+                <AppText style={styles.title}>Red jacket for sale!</AppText>
+                <AppText style={styles.price}>$100</AppText>
             </View>
-            <Seller
-                avatar={require('../assets/mosh.jpg')}
-                name="Mosh Hamedani"
-                listings="5"
-            />
+            <View style={styles.userContainer}>
+                <ListItem
+                    image={require('../assets/nessima.png')}
+                    title="Nessi Skye"
+                    subTitle="5 Listings"
+                />
+            </View>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
-    listing: {
-        flex: 1,
-    },
     details: {
-        flexDirection: 'column',
-        margin: 10,
+        padding: 20,
     },
     image: {
         width: '100%',
-        height: 200,
-        resizeMode: 'cover',
-        borderTopLeftRadius: 10,
-        borderTopRightRadius: 10,
+        height: 300,
     },
-
-    subTitle: {
-        fontSize: 14,
+    price: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        marginVertical: 10,
         color: colors.secondary,
     },
     title: {
         fontSize: 18,
-        fontFamily: 'Roboto',
-        fontWeight: 'bold',
-        color: '#000',
+        fontWeight: '600',
+        color: colors.black,
+    },
+    userContainer: {
+        marginVertical: 10,
     },
 });

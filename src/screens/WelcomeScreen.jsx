@@ -25,7 +25,7 @@ export default function WelcomeScreen() {
                     style={styles.logo}
                     source={require('../assets/logo-red.png')}
                 />
-                <Text style={styles.text}>Sell What You Don't Want</Text>
+                <Text style={styles.tagline}>Sell What You Don't Want</Text>
             </View>
             <View style={styles.buttonsContainer}>
                 <AppButton
@@ -53,23 +53,25 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     buttonsContainer: {
+        alignItems: 'center',
         padding: 20,
         width: '100%',
     },
     logoContainer: {
         flex: 1,
         alignItems: 'center',
-        marginTop: 45,
+        marginTop: 30,
     },
     logo: {
         width: 100,
         height: 100,
         resizeMode: 'contain',
     },
-    text: {
-        marginTop: 20,
-        fontSize: 16,
-        color: '#000',
+    tagline: {
+        paddingVertical: 20,
+        fontSize: 22,
+        fontWeight: '600',
         textAlign: 'center',
+        color: colors.black,
     },
 });
