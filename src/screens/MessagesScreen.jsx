@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FlatList, StyleSheet } from 'react-native';
+import { FlatList, StyleSheet, RefreshControl } from 'react-native';
 
 import ListItem from '../components/ListItem';
 import ListItemDeleteAction from '../components/ListItemDeleteAction';
@@ -23,11 +23,25 @@ const InitialMessages = [
 
 export default function MessagesScreen() {
     const [messages, setMessages] = useState(InitialMessages);
+    const [refreshing, setRefreshing] = useState(false);
 
     const handleDelete = (message) => {
         // Delete message from messages
         // and update the list
         setMessages(messages.filter((m) => m.id !== message.id));
+    };
+
+    const onRefresh = async () => {
+        setRefreshing(true);
+        await setMessages([
+            {
+                id: 2,
+                title: 'Message 2',
+                description: 'This is message 2',
+                image: require('../assets/mosh.jpg'),
+            },
+        ]);
+        setRefreshing(false);
     };
 
     return (
@@ -49,6 +63,13 @@ export default function MessagesScreen() {
                         ItemSeparatorComponent={ListItemSeparator}
                     />
                 )}
+                refreshControl={
+                    <RefreshControl
+                        refreshing={refreshing}
+                        enabled={true}
+                        onRefresh={onRefresh}
+                    />
+                }
             />
         </Screen>
     );
