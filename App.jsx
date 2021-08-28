@@ -1,34 +1,17 @@
-import React from 'react';
-import { Platform, SafeAreaView, StyleSheet, View } from 'react-native';
+import React, { useState } from 'react';
+import { Platform, SafeAreaView, StyleSheet, TextInput } from 'react-native';
+import AppTextInput from './src/components/AppTextInput';
+
+import Screen from './src/components/Screen';
 import GlobalStyles from './src/config/GlobalStyles';
 
-// import MessagesScreen from './src/screens/MessagesScreen';
-import AccountScreen from './src/screens/AccountScreen';
-import ListingsScreen from './src/screens/ListingsScreen';
-// import CardComp from './src/components/CardComp';
-// import ListingDetailScreen from './src/screens/ListingDetailScreen';
-// import ViewImageScreen from './src/screens/ViewImageScreen';
-// import WelcomeScreen from './src/screens/WelcomeScreen';
-
 export default function App() {
+    const [fName, setFname] = useState('');
     return (
         <SafeAreaView style={GlobalStyles.droidSafeArea}>
-            {/* <MessagesScreen /> */}
-            {/* <AccountScreen /> */}
-            <ListingsScreen />
-            {/* <WelcomeScreen /> */}
-            {/* <ViewImageScreen /> */}
-            {/* <CardComp
-                title="Red jacket for sale!"
-                subTitle="$200"
-                image={require('./src/assets/jacket.jpg')}
-            />
-            <CardComp
-                title="Full-size couch for sale!"
-                subTitle="$250"
-                image={require('./src/assets/couch.jpg')}
-            /> */}
-            {/* <ListingDetailScreen /> */}
+            <Screen>
+                <AppTextInput placeholder="Username" icon="email" />
+            </Screen>
         </SafeAreaView>
     );
 }

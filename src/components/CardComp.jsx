@@ -1,8 +1,8 @@
 import React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 
-import colors from '../config/colors';
 import AppText from './AppText';
+import GlobalStyles from '../config/GlobalStyles';
 
 export default function CardComp({ title, subTitle, image }) {
     return (
@@ -19,7 +19,7 @@ export default function CardComp({ title, subTitle, image }) {
 const styles = StyleSheet.create({
     card: {
         borderRadius: 15,
-        backgroundColor: colors.white,
+        backgroundColor: GlobalStyles.colors.white,
         marginBottom: 20,
         overflow: 'hidden',
     },
@@ -35,6 +35,6 @@ const styles = StyleSheet.create({
     },
     subTitle: {
         fontWeight: 'bold',
-        color: colors.secondary,
+        color: GlobalStyles.colors.secondary,
     },
 });

@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, Platform, TouchableOpacity } from 'react-native';
-import colors from '../config/colors';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+
+import GlobalStyles from '../config/GlobalStyles';
 
 export default function AppButton({ title, onPress, backgroundColor }) {
     return (
@@ -15,7 +16,7 @@ export default function AppButton({ title, onPress, backgroundColor }) {
 
 const styles = StyleSheet.create({
     button: {
-        backgroundColor: colors.primary,
+        backgroundColor: GlobalStyles.colors.primary,
         borderRadius: 30,
         justifyContent: 'center',
         alignItems: 'center',
@@ -24,10 +25,9 @@ const styles = StyleSheet.create({
         margin: 10,
     },
     text: {
-        fontSize: 16,
-        fontFamily: Platform.OS === 'ios' ? 'System' : 'Roboto',
+        ...GlobalStyles.text,
         textTransform: 'uppercase',
         textAlign: 'center',
-        color: colors.white,
+        color: GlobalStyles.colors.white,
     },
 });
