@@ -2,7 +2,9 @@ import React from 'react';
 import { Platform, SafeAreaView, StyleSheet, View } from 'react-native';
 import GlobalStyles from './src/config/GlobalStyles';
 
-import MessagesScreen from './src/screens/MessagesScreen';
+// import MessagesScreen from './src/screens/MessagesScreen';
+import AccountScreen from './src/screens/AccountScreen';
+import ListingsScreen from './src/screens/ListingsScreen';
 // import CardComp from './src/components/CardComp';
 // import ListingDetailScreen from './src/screens/ListingDetailScreen';
 // import ViewImageScreen from './src/screens/ViewImageScreen';
@@ -11,8 +13,9 @@ import MessagesScreen from './src/screens/MessagesScreen';
 export default function App() {
     return (
         <SafeAreaView style={GlobalStyles.droidSafeArea}>
-            <MessagesScreen />
-
+            {/* <MessagesScreen /> */}
+            {/* <AccountScreen /> */}
+            <ListingsScreen />
             {/* <WelcomeScreen /> */}
             {/* <ViewImageScreen /> */}
             {/* <CardComp

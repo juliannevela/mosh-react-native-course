@@ -7,6 +7,7 @@ import AppText from './AppText';
 
 export default function ListItem({
     image,
+    IconComponent,
     title,
     description,
     onPress,
@@ -16,12 +17,15 @@ export default function ListItem({
         <Swipeable renderRightActions={renderRightActions}>
             <TouchableHighlight underlayColor={colors.light} onPress={onPress}>
                 <View style={styles.container}>
-                    <Image source={image} style={styles.image} />
+                    {IconComponent}
+                    {image && <Image source={image} style={styles.image} />}
                     <View style={styles.info}>
                         <AppText style={styles.title}>{title}</AppText>
-                        <AppText style={styles.description}>
-                            {description}
-                        </AppText>
+                        {description ? (
+                            <AppText style={styles.description}>
+                                {description}
+                            </AppText>
+                        ) : null}
                     </View>
                 </View>
             </TouchableHighlight>
@@ -33,6 +37,7 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
         padding: 15,
+        backgroundColor: colors.white,
     },
     description: {
         fontSize: 12,
@@ -42,10 +47,11 @@ const styles = StyleSheet.create({
         width: 70,
         height: 70,
         borderRadius: 35,
-        marginRight: 10,
     },
     info: {
         flexDirection: 'column',
+        marginLeft: 10,
+        justifyContent: 'center',
     },
     title: {
         fontWeight: '500',
