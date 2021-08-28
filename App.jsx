@@ -6,12 +6,33 @@ import AppTextInput from './src/components/AppTextInput';
 import Screen from './src/components/Screen';
 import GlobalStyles from './src/config/GlobalStyles';
 
+const categories = [
+    {
+        label: 'Collectibles',
+        value: 1,
+    },
+    {
+        label: 'Clothing',
+        value: 2,
+    },
+    {
+        label: 'Games',
+        value: 3,
+    },
+];
+
 export default function App() {
-    const [fName, setFname] = useState('');
+    const [category, setCategory] = useState(categories[0]);
     return (
         <SafeAreaView style={GlobalStyles.droidSafeArea}>
             <Screen>
-                <AppPicker icon="apps" placeholder="Category" />
+                <AppPicker
+                    selectedItem={category}
+                    onSelectItem={(item) => setCategory(item)}
+                    icon="apps"
+                    placeholder="Category"
+                    items={categories}
+                />
                 <AppTextInput placeholder="Email" icon="email" />
             </Screen>
         </SafeAreaView>
