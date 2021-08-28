@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Platform, SafeAreaView, StyleSheet, TextInput } from 'react-native';
+import AppPicker from './src/components/AppPicker';
 import AppTextInput from './src/components/AppTextInput';
 
 import Screen from './src/components/Screen';
@@ -10,7 +11,8 @@ export default function App() {
     return (
         <SafeAreaView style={GlobalStyles.droidSafeArea}>
             <Screen>
-                <AppTextInput placeholder="Username" icon="email" />
+                <AppPicker icon="apps" placeholder="Category" />
+                <AppTextInput placeholder="Email" icon="email" />
             </Screen>
         </SafeAreaView>
     );
