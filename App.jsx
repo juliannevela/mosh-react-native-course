@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { SafeAreaView, StyleSheet } from 'react-native';
+import { Platform, SafeAreaView, StyleSheet } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 
 import GlobalStyles from './src/config/GlobalStyles';
-import ImageInput from './src/components/ImageInput';
 import { Screen } from './src/components';
+import ImageInputList from './src/components/ImageInputList';
 
 export default function App() {
-    const [image, setImage] = useState(null);
+    // const [imageUri, setImageUri] = useState(null);
+    const [imageUris, setImageUris] = useState([]);
 
     useEffect(() => {
         (async () => {
@@ -24,7 +25,7 @@ export default function App() {
         try {
             const { cancelled, uri } =
                 await ImagePicker.launchImageLibraryAsync();
-            if (!cancelled) setImage(uri);
+            if (!cancelled) setImageUris([...imageUris, uri]);
         } catch (e) {
             console.log('Oops: ', e.message);
         }
@@ -33,7 +34,12 @@ export default function App() {
     return (
         <SafeAreaView style={GlobalStyles.droidSafeArea}>
             <Screen style={styles.container}>
-                <ImageInput imageURI={image} onChangeImage={pickImage} />
+                {/* <ImageInput imageUri={imageUri} onChangeImage={pickImage} /> */}
+                <ImageInputList
+                    imageUris={imageUris}
+                    onAddImage={pickImage}
+                    onRemoveImage={() => {}}
+                />
             </Screen>
         </SafeAreaView>
     );

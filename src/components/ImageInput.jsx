@@ -4,11 +4,11 @@ import { StyleSheet, Image, Pressable } from 'react-native';
 import { Icon } from './';
 import GlobalStyles from '../config/GlobalStyles';
 
-export default function ImageInput({ imageURI, onChangeImage }) {
+export default function ImageInput({ imageUri, onChangeImage, selected }) {
     return (
         <Pressable style={styles.container} onPress={onChangeImage}>
-            {imageURI ? (
-                <Image source={{ uri: imageURI }} style={styles.image} />
+            {selected ? (
+                <Image source={{ uri: imageUri }} style={styles.image} />
             ) : (
                 <Icon
                     name="camera"
@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
         height: 50,
         borderRadius: 10,
         backgroundColor: GlobalStyles.colors.light,
+        marginHorizontal: 5,
     },
     image: {
         width: 50,
