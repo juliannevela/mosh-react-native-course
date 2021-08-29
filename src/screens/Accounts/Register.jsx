@@ -1,11 +1,12 @@
 import React from 'react';
-import { Image, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import * as Yup from 'yup';
 
-import { AppForm, AppFormField, AppFormSubmit } from '../components/forms';
+import { Form, FormField, FormSubmit } from '../components/forms';
 import Screen from '../components/Screen';
 
 const validationSchema = Yup.object().shape({
+    name: Yup.string().required().label('Name'),
     email: Yup.string().required().email().label('Email'),
     password: Yup.string().required().min(4).label('Password'),
 });
@@ -13,16 +14,21 @@ const validationSchema = Yup.object().shape({
 export default function LoginScreen() {
     return (
         <Screen style={styles.container}>
-            <Image
-                source={require('../assets/logo-red.png')}
-                style={styles.logo}
-            />
-            <AppForm
-                initialValues={{ email: '', password: '' }}
+            <Form
+                initialValues={{ name: '', email: '', password: '' }}
                 onSubmit={(values) => console.log(values)}
                 validationSchema={validationSchema}
             >
-                <AppFormField
+                <FormField
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    icon="account"
+                    keyboardType="default"
+                    name="name"
+                    placeholder="Name"
+                    textContentType="emailAddress"
+                />
+                <FormField
                     autoCapitalize="none"
                     autoCorrect={false}
                     icon="email"
@@ -31,7 +37,7 @@ export default function LoginScreen() {
                     placeholder="Email"
                     textContentType="emailAddress"
                 />
-                <AppFormField
+                <FormField
                     autoCapitalize="none"
                     autoCorrect={false}
                     icon="lock"
@@ -40,8 +46,8 @@ export default function LoginScreen() {
                     secureTextEntry
                     textContentType="password"
                 />
-                <AppFormSubmit title="Login" />
-            </AppForm>
+                <FormSubmit title="Register" />
+            </Form>
         </Screen>
     );
 }
@@ -49,12 +55,5 @@ export default function LoginScreen() {
 const styles = StyleSheet.create({
     container: {
         padding: 10,
-    },
-    logo: {
-        width: 80,
-        height: 80,
-        alignSelf: 'center',
-        marginTop: 50,
-        marginBottom: 20,
     },
 });

@@ -25,7 +25,7 @@ export default function WelcomeScreen() {
                     style={styles.logo}
                     source={require('../assets/logo-red.png')}
                 />
-                <Text style={styles.tagline}>Sell What You Don't Want</Text>
+                AppText style={styles.tagline}>Sell What You Don't Want</Text>
             </View>
             <View style={styles.buttonsContainer}>
                 <AppButton

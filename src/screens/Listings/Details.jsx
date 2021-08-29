@@ -1,15 +1,15 @@
 import React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 
-import ListItem from '../components/ListItem';
-import colors from '../config/colors';
-import AppText from '../components/AppText';
+import { Item } from '../../components/lists';
+import colors from '../../config/colors';
+import AppText from '../../components/Text';
 
-export default function ListingDetailScreen() {
+export default function Details() {
     return (
         <View>
             <Image
-                source={require('../assets/jacket.jpg')}
+                source={require('../../assets/jacket.jpg')}
                 style={styles.image}
             />
             <View style={styles.details}>
@@ -17,8 +17,8 @@ export default function ListingDetailScreen() {
                 <AppText style={styles.price}>$100</AppText>
             </View>
             <View style={styles.userContainer}>
-                <ListItem
-                    image={require('../assets/nessima.png')}
+                <Item
+                    image={require('../../assets/nessima.png')}
                     title="Nessi Skye"
                     subTitle="5 Listings"
                 />

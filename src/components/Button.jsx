@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 
+import AppText from './Text';
 import GlobalStyles from '../config/GlobalStyles';
 
 export default function AppButton({ title, onPress, backgroundColor }) {
@@ -9,7 +10,7 @@ export default function AppButton({ title, onPress, backgroundColor }) {
             style={[styles.button, backgroundColor && { backgroundColor }]}
             onPress={onPress}
         >
-            <Text style={styles.text}>{title}</Text>
+            <AppText style={styles.text}>{title}</AppText>
         </TouchableOpacity>
     );
 }

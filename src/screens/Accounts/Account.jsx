@@ -1,12 +1,11 @@
 import React from 'react';
 import { StyleSheet, FlatList, View } from 'react-native';
 
-import ListItem from '../components/ListItem';
-import ListItemSeparator from '../components/ListItemSeparator';
-import Screen from '../components/Screen';
-import Icon from '../components/Icon';
+import { Item, Separator } from '../components/lists';
+import Screen from '../../components/Screen';
+import Icon from '../../components/Icon';
 
-import colors from '../config/colors';
+import colors from '../../config/colors';
 
 const menuItems = [
     {
@@ -29,7 +28,7 @@ export default function AccountScreen() {
     return (
         <Screen style={styles.screen}>
             <View style={styles.container}>
-                <ListItem
+                <Item
                     image={require('../assets/nessima.png')}
                     title="Nessima Skye"
                     description="hello@juliannevela.dev"
@@ -42,7 +41,7 @@ export default function AccountScreen() {
                     data={menuItems}
                     keyExtractor={(menuItem) => menuItem.title}
                     renderItem={({ item }) => (
-                        <ListItem
+                        <Item
                             title={item.title}
                             IconComponent={
                                 <Icon
@@ -53,10 +52,10 @@ export default function AccountScreen() {
                             onPress={() => console.log(item.title)}
                         />
                     )}
-                    ItemSeparatorComponent={ListItemSeparator}
+                    ItemSeparatorComponent={Separator}
                 />
             </View>
-            <ListItem
+            <Item
                 title="Log Out"
                 IconComponent={
                     <Icon name="logout" backgroundColor={colors.logout} />

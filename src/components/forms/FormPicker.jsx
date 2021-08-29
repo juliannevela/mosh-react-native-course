@@ -4,9 +4,9 @@ import { useFormikContext } from 'formik';
 
 import GlobalStyles from '../../config/GlobalStyles';
 import ErrorMessage from './ErrorMessage';
-import AppPicker from '../AppPicker';
+import AppPicker from '../Picker';
 
-export default function AppFormPicker({
+export default function FormPicker({
     items,
     name,
     numberOfColumns,

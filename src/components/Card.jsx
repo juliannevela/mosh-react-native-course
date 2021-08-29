@@ -1,10 +1,10 @@
 import React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 
-import AppText from './AppText';
+import AppText from './Text';
 import GlobalStyles from '../config/GlobalStyles';
 
-export default function CardComp({ title, subTitle, image }) {
+export default function Card({ title, subTitle, image }) {
     return (
         <View style={styles.card}>
             <Image source={image} style={styles.cardImage} />

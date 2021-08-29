@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import {
-    Button,
     FlatList,
     Modal,
     StyleSheet,
@@ -10,10 +9,10 @@ import {
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import GlobalStyles from '../config/GlobalStyles';
-import AppText from './AppText';
+import AppText from './Text';
 import Screen from './Screen';
 import PickerItem from './PickerItem';
-import AppButton from './AppButton';
+import AppButton from './Button';
 
 export default function AppPicker({
     icon,

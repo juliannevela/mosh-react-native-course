@@ -2,9 +2,9 @@ import React from 'react';
 import { Image, StyleSheet, Platform, View } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-import colors from '../config/colors';
+import colors from '../../config/colors';
 
-export default function ViewImageScreen() {
+export default function ViewImage() {
     return (
         <View style={styles.container}>
             <MaterialCommunityIcons
@@ -22,7 +22,7 @@ export default function ViewImageScreen() {
             <Image
                 style={styles.image}
                 resizeMode={'contain'}
-                source={require('../assets/chair.jpg')}
+                source={require('../../assets/chair.jpg')}
             />
         </View>
     );

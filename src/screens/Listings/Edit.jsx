@@ -1,11 +1,11 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import * as Yup from 'yup';
-import CategoryPickerItem from '../components/CategoryPickerItem';
+import CategoryPickerItem from '../../components/CategoryPickerItem';
 
-import { AppForm, FormField, Picker, Submit } from '../components/forms';
-import Screen from '../components/Screen';
-import GlobalStyles from '../config/GlobalStyles';
+import { AppForm, FormField, Picker, Submit } from '../../components/forms';
+import Screen from '../../components/Screen';
+import GlobalStyles from '../../config/GlobalStyles';
 
 const validationSchema = Yup.object().shape({
     category: Yup.object().required().nullable().label('Category'),

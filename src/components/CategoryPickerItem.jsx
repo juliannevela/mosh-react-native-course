@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 
-import AppText from './AppText';
+import AppText from './Text';
 import Icon from './Icon';
 
 export default function CategoryPickerItem({ item, onPress }) {
