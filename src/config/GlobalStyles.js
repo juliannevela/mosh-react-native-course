@@ -9,9 +9,14 @@ export default {
         paddingTop: Platform.OS === 'android' ? 25 : 0,
     },
     text: {
-        fontSize: 18,
+        fontSize: 14,
         fontFamily: Platform.OS === 'ios' ? 'Avenir' : 'Roboto',
         color: colors.dark,
     },
     colors,
+    inputWidth: {
+        small: '40%',
+        medium: '50%',
+        large: '100%',
+    },
 };

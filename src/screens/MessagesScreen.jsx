@@ -1,23 +1,25 @@
 import React, { useState } from 'react';
-import { FlatList, StyleSheet, RefreshControl } from 'react-native';
+import { FlatList, RefreshControl } from 'react-native';
+import Icon from '../components/Icon';
 
-import ListItem from '../components/ListItem';
-import ListItemDeleteAction from '../components/ListItemDeleteAction';
-import ListItemSeparator from '../components/ListItemSeparator';
+import { ListItem, DeleteAction, Separator } from '../components/lists';
 import Screen from '../components/Screen';
+import GlobalStyles from '../config/GlobalStyles';
 
 const InitialMessages = [
     {
         id: 1,
-        title: 'Message 1',
-        description: 'This is message 1',
+        title: 'I love you...',
+        description:
+            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos iste tenetur expedita non repellendus. Delectus, odio exercitationem quisquam eos quo, mollitia distinctio sapiente inventore quibusdam eius dolorem! Voluptate, velit at.',
         image: require('../assets/nessima.png'),
     },
     {
         id: 2,
-        title: 'Message 2',
-        description: 'This is message 2',
-        image: require('../assets/mosh.jpg'),
+        title: 'I know',
+        description:
+            'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dicta quidem iusto accusamus voluptates consequatur minima reiciendis ab nesciunt sapiente minus sequi tenetur, eaque sunt neque? Excepturi accusamus facere officia.',
+        image: require('../assets/TBTCheers.png'),
     },
 ];
 
@@ -26,8 +28,6 @@ export default function MessagesScreen() {
     const [refreshing, setRefreshing] = useState(false);
 
     const handleDelete = (message) => {
-        // Delete message from messages
-        // and update the list
         setMessages(messages.filter((m) => m.id !== message.id));
     };
 
@@ -51,18 +51,17 @@ export default function MessagesScreen() {
                 keyExtractor={(message) => message.id.toString()}
                 renderItem={({ item }) => (
                     <ListItem
-                        title={item.title}
                         description={item.description}
                         image={item.image}
                         onPress={() => console.log('Pressed: ', item)}
                         renderRightActions={() => (
-                            <ListItemDeleteAction
-                                onPress={() => handleDelete(item)}
-                            />
+                            <DeleteAction onPress={() => handleDelete(item)} />
                         )}
-                        ItemSeparatorComponent={ListItemSeparator}
+                        showChevrons
+                        title={item.title}
                     />
                 )}
+                ItemSeparatorComponent={Separator}
                 refreshControl={
                     <RefreshControl
                         refreshing={refreshing}
@@ -74,5 +73,3 @@ export default function MessagesScreen() {
         </Screen>
     );
 }
-
-const styles = StyleSheet.create({});

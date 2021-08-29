@@ -1,40 +1,13 @@
-import React, { useState } from 'react';
-import { Platform, SafeAreaView, StyleSheet, TextInput } from 'react-native';
-import AppPicker from './src/components/AppPicker';
-import AppTextInput from './src/components/AppTextInput';
+import React from 'react';
+import { Platform, SafeAreaView, StyleSheet } from 'react-native';
 
-import Screen from './src/components/Screen';
 import GlobalStyles from './src/config/GlobalStyles';
-
-const categories = [
-    {
-        label: 'Collectibles',
-        value: 1,
-    },
-    {
-        label: 'Clothing',
-        value: 2,
-    },
-    {
-        label: 'Games',
-        value: 3,
-    },
-];
+import ListingEditScreen from './src/screens/ListingEditScreen';
 
 export default function App() {
-    const [category, setCategory] = useState(categories[0]);
     return (
         <SafeAreaView style={GlobalStyles.droidSafeArea}>
-            <Screen>
-                <AppPicker
-                    selectedItem={category}
-                    onSelectItem={(item) => setCategory(item)}
-                    icon="apps"
-                    placeholder="Category"
-                    items={categories}
-                />
-                <AppTextInput placeholder="Email" icon="email" />
-            </Screen>
+            <ListingEditScreen />
         </SafeAreaView>
     );
 }

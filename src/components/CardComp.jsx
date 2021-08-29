@@ -9,8 +9,12 @@ export default function CardComp({ title, subTitle, image }) {
         <View style={styles.card}>
             <Image source={image} style={styles.cardImage} />
             <View style={styles.details}>
-                <AppText style={styles.title}>{title}</AppText>
-                <AppText style={styles.subTitle}>{subTitle}</AppText>
+                <AppText style={styles.title} lines={1}>
+                    {title}
+                </AppText>
+                <AppText style={styles.subTitle} lines={3}>
+                    {subTitle}
+                </AppText>
             </View>
         </View>
     );

@@ -13,20 +13,24 @@ import GlobalStyles from '../config/GlobalStyles';
 import AppText from './AppText';
 import Screen from './Screen';
 import PickerItem from './PickerItem';
+import AppButton from './AppButton';
 
 export default function AppPicker({
     icon,
     items,
+    numberOfColumns = 1,
     onSelectItem,
+    PickerItemComponent = PickerItem,
     placeholder,
     selectedItem,
+    width = '100%',
 }) {
     const [modalVisible, setModalVisible] = useState(false);
 
     return (
         <>
             <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
-                <View style={styles.container}>
+                <View style={[styles.container, { width }]}>
                     {icon && (
                         <MaterialCommunityIcons
                             name={icon}
@@ -35,9 +39,15 @@ export default function AppPicker({
                             style={styles.icon}
                         />
                     )}
-                    <AppText style={styles.text}>
-                        {selectedItem ? selectedItem.label : placeholder}
-                    </AppText>
+                    {selectedItem ? (
+                        <AppText style={styles.text}>
+                            {selectedItem.label}
+                        </AppText>
+                    ) : (
+                        <AppText style={styles.placeholder}>
+                            {placeholder}
+                        </AppText>
+                    )}
                     <MaterialCommunityIcons
                         name="chevron-down"
                         size={20}
@@ -47,16 +57,18 @@ export default function AppPicker({
             </TouchableWithoutFeedback>
             <Modal visible={modalVisible} animationType="slide">
                 <Screen>
-                    <Button
+                    <AppButton
                         title="Close"
                         onPress={() => setModalVisible(false)}
+                        backgroundColor={GlobalStyles.colors.secondary}
                     />
                     <FlatList
                         data={items}
                         keyExtractor={(item) => item.value.toString()}
+                        numColumns={numberOfColumns}
                         renderItem={({ item }) => (
-                            <PickerItem
-                                label={item.label}
+                            <PickerItemComponent
+                                item={item}
                                 onPress={() => {
                                     setModalVisible(false);
                                     onSelectItem(item);
@@ -72,16 +84,20 @@ export default function AppPicker({
 
 const styles = StyleSheet.create({
     container: {
+        flexDirection: 'row',
+        alignItems: 'center',
         backgroundColor: GlobalStyles.colors.light,
         borderRadius: 25,
-        flexDirection: 'row',
         width: '100%',
         padding: 15,
         marginVertical: 10,
-        alignItems: 'center',
     },
     icon: {
         marginRight: 10,
+    },
+    placeholder: {
+        flex: 1,
+        color: GlobalStyles.colors.medium,
     },
     text: {
         flex: 1,

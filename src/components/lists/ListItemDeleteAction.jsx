@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-import GlobalStyles from '../config/GlobalStyles';
+import GlobalStyles from '../../config/GlobalStyles';
 
 export default function ListItemDeleteAction({ onPress }) {
     return (
