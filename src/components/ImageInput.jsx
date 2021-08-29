@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         backgroundColor: GlobalStyles.colors.light,
         marginHorizontal: 5,
+        marginVertical: 5,
     },
     image: {
         width: 50,

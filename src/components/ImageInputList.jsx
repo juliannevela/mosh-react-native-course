@@ -7,16 +7,10 @@ export default function ImageInputList({
     onAddImage,
     onRemoveImage,
 }) {
-    let data = imageUris || [
-        'https://temp.media/?height=400&category=food&text=TEST',
-        'https://temp.media/?height=400&category=food&text=TEST',
-        'https://temp.media/?height=400&category=food&text=TEST',
-    ];
-
     return (
         <View style={styles.container}>
             <FlatList
-                data={data}
+                data={imageUris}
                 keyExtractor={(item, index) => item + index.toString()}
                 numColumns={3}
                 renderItem={({ item }) => (
@@ -34,8 +28,6 @@ export default function ImageInputList({
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         flexDirection: 'row',
-        justifyContent: 'center',
     },
 });

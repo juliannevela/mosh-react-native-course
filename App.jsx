@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Platform, SafeAreaView, StyleSheet } from 'react-native';
+import { SafeAreaView, StyleSheet } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 
 import GlobalStyles from './src/config/GlobalStyles';
@@ -7,7 +7,6 @@ import { Screen } from './src/components';
 import ImageInputList from './src/components/ImageInputList';
 
 export default function App() {
-    // const [imageUri, setImageUri] = useState(null);
     const [imageUris, setImageUris] = useState([]);
 
     useEffect(() => {
@@ -24,21 +23,31 @@ export default function App() {
     const pickImage = async () => {
         try {
             const { cancelled, uri } =
-                await ImagePicker.launchImageLibraryAsync();
+                await ImagePicker.launchImageLibraryAsync({
+                    mediaTypes: ImagePicker.MediaTypeOptions.Images,
+                    allowsEditing: true,
+                    aspect: [4, 3],
+                    quality: 1,
+                });
             if (!cancelled) setImageUris([...imageUris, uri]);
         } catch (e) {
             console.log('Oops: ', e.message);
         }
     };
 
+    const handleRemoveImage = () => {
+        const newImageUris = [...imageUris];
+        newImageUris.splice(imageUris.length - 1, 1);
+        setImageUris(newImageUris);
+    };
+
     return (
         <SafeAreaView style={GlobalStyles.droidSafeArea}>
             <Screen style={styles.container}>
-                {/* <ImageInput imageUri={imageUri} onChangeImage={pickImage} /> */}
                 <ImageInputList
                     imageUris={imageUris}
                     onAddImage={pickImage}
-                    onRemoveImage={() => {}}
+                    onRemoveImage={handleRemoveImage}
                 />
             </Screen>
         </SafeAreaView>
@@ -49,8 +58,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'row',
-        justifyContent: 'center',
-        marginTop: Platform.OS === 'android' ? 25 : 0,
         backgroundColor: '#fff',
     },
 });
