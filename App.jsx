@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { SafeAreaView, StyleSheet } from 'react-native';
+import { Alert, SafeAreaView, StyleSheet } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 
 import GlobalStyles from './src/config/GlobalStyles';
@@ -35,6 +35,23 @@ export default function App() {
         }
     };
 
+    const showConfirmDialog = () => {
+        return Alert.alert(
+            'Are you sure?',
+            'Are you sure you want to delete this image?',
+            [
+                {
+                    text: 'Cancel',
+                },
+                {
+                    text: 'Delete',
+                    onPress: () => handleRemoveImage(),
+                },
+            ],
+            { cancelable: true }
+        );
+    };
+
     const handleRemoveImage = () => {
         const newImageUris = [...imageUris];
         newImageUris.splice(imageUris.length - 1, 1);
@@ -47,7 +64,7 @@ export default function App() {
                 <ImageInputList
                     imageUris={imageUris}
                     onAddImage={pickImage}
-                    onRemoveImage={handleRemoveImage}
+                    onRemoveImage={showConfirmDialog}
                 />
             </Screen>
         </SafeAreaView>
