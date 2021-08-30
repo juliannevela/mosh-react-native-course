@@ -15,7 +15,7 @@ export default {
     },
     colors,
     inputWidth: {
-        small: '40%',
+        small: '30%',
         medium: '50%',
         large: '100%',
     },

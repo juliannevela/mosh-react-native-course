@@ -1,17 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import * as Yup from 'yup';
-import CategoryPickerItem from '../../components/CategoryPickerItem';
+// import * as Location from 'expo-location';
 
-import { AppForm, FormField, Picker, Submit } from '../../components/forms';
+import {
+    AppForm,
+    FormField,
+    FormImagePicker,
+    Picker,
+    Submit,
+} from '../../components/forms';
+import CategoryPickerItem from '../../components/CategoryPickerItem';
 import Screen from '../../components/Screen';
 import GlobalStyles from '../../config/GlobalStyles';
+import useImageUtils from '../../hooks/useImageUtils';
+import ImageInputList from '../../components/ImageInputList';
 
 const validationSchema = Yup.object().shape({
     category: Yup.object().required().nullable().label('Category'),
     description: Yup.string().optional().label('Description'),
     price: Yup.number().required().min(1).max(10000).label('Price'),
     title: Yup.string().required().min(1).label('Title'),
+    images: Yup.array().min(1, 'Please select at least one image'),
 });
 
 const categories = [
@@ -72,6 +82,21 @@ const categories = [
 ];
 
 export default function ListingEditScreen() {
+    const { imageUris, pickImage, showConfirmDialog } = useImageUtils();
+
+    // const [location, setLocation] = useState(null);
+
+    // useEffect(() => {
+    //     (async () => {
+    //         const { granted } =
+    //             await Location.requestForegroundPermissionsAsync();
+    //         if (granted) {
+    //             const location = await Location.getCurrentPositionAsync({});
+    //             setLocation(location);
+    //         }
+    //     })();
+    // }, []);
+
     return (
         <Screen style={styles.container}>
             <AppForm
@@ -80,10 +105,18 @@ export default function ListingEditScreen() {
                     description: '',
                     price: '',
                     title: '',
+                    images: [],
+                    // location,
                 }}
                 onSubmit={(values) => console.log(values)}
                 validationSchema={validationSchema}
             >
+                <ImageInputList
+                    imageUris={imageUris}
+                    onAddImage={pickImage}
+                    onRemoveImage={showConfirmDialog}
+                />
+                {/* <FormImagePicker name="images" /> */}
                 <FormField
                     autoCapitalize="words"
                     maxLength={255}
@@ -91,7 +124,7 @@ export default function ListingEditScreen() {
                     placeholder="Title"
                 />
                 <FormField
-                    icon="cash-usd"
+                    // icon="cash-usd"
                     keyboardType="decimal-pad"
                     maxLength={8}
                     name="price"
@@ -121,6 +154,6 @@ export default function ListingEditScreen() {
 
 const styles = StyleSheet.create({
     container: {
-        padding: 10,
+        paddingHorizontal: 5,
     },
 });

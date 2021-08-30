@@ -1,27 +1,32 @@
-import React from 'react';
-import { View, StyleSheet, FlatList } from 'react-native';
+import React, { useRef } from 'react';
+import { View, StyleSheet, ScrollView } from 'react-native';
 import ImageInput from './ImageInput';
 
 export default function ImageInputList({
-    imageUris,
+    imageUris = [],
     onAddImage,
     onRemoveImage,
 }) {
+    const scrollView = useRef();
+
     return (
-        <View style={styles.container}>
-            <FlatList
-                data={imageUris}
-                keyExtractor={(item, index) => item + index.toString()}
-                numColumns={3}
-                renderItem={({ item }) => (
-                    <ImageInput
-                        imageUri={item}
-                        onChangeImage={onRemoveImage}
-                        selected
-                    />
-                )}
-            />
-            <ImageInput onChangeImage={onAddImage} />
+        <View>
+            <ScrollView
+                horizontal
+                ref={scrollView}
+                onContentSizeChange={() => scrollView.current.scrollToEnd()}
+            >
+                <View style={styles.container}>
+                    {imageUris.map((uri) => (
+                        <ImageInput
+                            key={uri}
+                            imageUri={uri}
+                            onChangeImage={() => onRemoveImage(uri)}
+                        />
+                    ))}
+                    <ImageInput onChangeImage={(uri) => onAddImage(uri)} />
+                </View>
+            </ScrollView>
         </View>
     );
 }

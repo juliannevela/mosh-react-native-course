@@ -17,7 +17,7 @@ export default function AppTextInput({ icon, width = '100%', ...otherProps }) {
             )}
             <TextInput
                 placeholderTextColor={GlobalStyles.colors.medium}
-                style={{ ...GlobalStyles.text, width: width }}
+                style={{ ...GlobalStyles.text }}
                 {...otherProps}
             />
         </View>
@@ -29,8 +29,7 @@ const styles = StyleSheet.create({
         backgroundColor: GlobalStyles.colors.light,
         borderRadius: 25,
         flexDirection: 'row',
-        width: '100%',
-        padding: 15,
+        padding: 10,
         marginVertical: 10,
         alignItems: 'center',
     },
