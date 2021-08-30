@@ -8,7 +8,6 @@ export default function ImageInputList({
     onRemoveImage,
 }) {
     const scrollView = useRef();
-
     return (
         <View>
             <ScrollView

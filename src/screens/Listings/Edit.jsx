@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { StyleSheet } from 'react-native';
 import * as Yup from 'yup';
-// import * as Location from 'expo-location';
 
+import useLocation from '../../hooks/useLocation';
 import {
     AppForm,
     FormField,
@@ -13,8 +13,6 @@ import {
 import CategoryPickerItem from '../../components/CategoryPickerItem';
 import Screen from '../../components/Screen';
 import GlobalStyles from '../../config/GlobalStyles';
-import useImageUtils from '../../hooks/useImageUtils';
-import ImageInputList from '../../components/ImageInputList';
 
 const validationSchema = Yup.object().shape({
     category: Yup.object().required().nullable().label('Category'),
@@ -82,20 +80,7 @@ const categories = [
 ];
 
 export default function ListingEditScreen() {
-    const { imageUris, pickImage, showConfirmDialog } = useImageUtils();
-
-    // const [location, setLocation] = useState(null);
-
-    // useEffect(() => {
-    //     (async () => {
-    //         const { granted } =
-    //             await Location.requestForegroundPermissionsAsync();
-    //         if (granted) {
-    //             const location = await Location.getCurrentPositionAsync({});
-    //             setLocation(location);
-    //         }
-    //     })();
-    // }, []);
+    const location = useLocation();
 
     return (
         <Screen style={styles.container}>
@@ -106,17 +91,12 @@ export default function ListingEditScreen() {
                     price: '',
                     title: '',
                     images: [],
-                    // location,
+                    location,
                 }}
-                onSubmit={(values) => console.log(values)}
+                onSubmit={(values) => console.log(location)}
                 validationSchema={validationSchema}
             >
-                <ImageInputList
-                    imageUris={imageUris}
-                    onAddImage={pickImage}
-                    onRemoveImage={showConfirmDialog}
-                />
-                {/* <FormImagePicker name="images" /> */}
+                <FormImagePicker name="images" />
                 <FormField
                     autoCapitalize="words"
                     maxLength={255}
