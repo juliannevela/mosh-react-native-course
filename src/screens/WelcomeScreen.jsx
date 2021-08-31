@@ -2,19 +2,16 @@ import React from 'react';
 import {
     ImageBackground,
     StyleSheet,
-    Text,
     View,
     Platform,
     Image,
 } from 'react-native';
 
-import AppButton from '../components/AppButton';
+import { AppButton, AppText } from '../components';
 import colors from '../config/colors';
 
-export default function WelcomeScreen() {
-    const handlePress = () => console.log('Welcome Screen Pressed!');
+export default function WelcomeScreen({ navigation }) {
     return (
-        // <View style={styles.container}>
         <ImageBackground
             source={require('../assets/background.jpg')}
             blurRadius={1.5}
@@ -25,22 +22,23 @@ export default function WelcomeScreen() {
                     style={styles.logo}
                     source={require('../assets/logo-red.png')}
                 />
-                AppText style={styles.tagline}>Sell What You Don't Want</Text>
+                <AppText style={styles.tagline}>
+                    Sell What You Don't Want
+                </AppText>
             </View>
             <View style={styles.buttonsContainer}>
                 <AppButton
                     title="Login"
-                    onPress={handlePress}
+                    onPress={() => navigation.navigate('Login')}
                     backgroundColor={colors.primary}
                 />
                 <AppButton
                     title="Register"
-                    onPress={handlePress}
+                    onPress={() => navigation.navigate('Register')}
                     backgroundColor={colors.secondary}
                 />
             </View>
         </ImageBackground>
-        // </View>
     );
 }
 

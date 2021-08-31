@@ -1,12 +1,11 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { Image, StyleSheet } from 'react-native';
 import * as Yup from 'yup';
 
 import { Form, FormField, FormSubmit } from '../components/forms';
-import Screen from '../components/Screen';
+import Screen from '../components';
 
 const validationSchema = Yup.object().shape({
-    name: Yup.string().required().label('Name'),
     email: Yup.string().required().email().label('Email'),
     password: Yup.string().required().min(4).label('Password'),
 });
@@ -14,20 +13,15 @@ const validationSchema = Yup.object().shape({
 export default function LoginScreen() {
     return (
         <Screen style={styles.container}>
+            <Image
+                source={require('../assets/logo-red.png')}
+                style={styles.logo}
+            />
             <Form
-                initialValues={{ name: '', email: '', password: '' }}
+                initialValues={{ email: '', password: '' }}
                 onSubmit={(values) => console.log(values)}
                 validationSchema={validationSchema}
             >
-                <FormField
-                    autoCapitalize="none"
-                    autoCorrect={false}
-                    icon="account"
-                    keyboardType="default"
-                    name="name"
-                    placeholder="Name"
-                    textContentType="emailAddress"
-                />
                 <FormField
                     autoCapitalize="none"
                     autoCorrect={false}
@@ -46,7 +40,7 @@ export default function LoginScreen() {
                     secureTextEntry
                     textContentType="password"
                 />
-                <FormSubmit title="Register" />
+                <FormSubmit title="Login" />
             </Form>
         </Screen>
     );
@@ -55,5 +49,12 @@ export default function LoginScreen() {
 const styles = StyleSheet.create({
     container: {
         padding: 10,
+    },
+    logo: {
+        width: 80,
+        height: 80,
+        alignSelf: 'center',
+        marginTop: 50,
+        marginBottom: 20,
     },
 });

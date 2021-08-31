@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { FlatList, RefreshControl } from 'react-native';
 
-import { Item, DeleteAction, Separator } from '../../components/lists';
-import Screen from '../../components/Screen';
+import { Item, DeleteAction, Separator } from '../components/lists';
+import Screen from '../components';
 
 const InitialMessages = [
     {
@@ -10,14 +10,14 @@ const InitialMessages = [
         title: 'I love you...',
         description:
             'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos iste tenetur expedita non repellendus. Delectus, odio exercitationem quisquam eos quo, mollitia distinctio sapiente inventore quibusdam eius dolorem! Voluptate, velit at.',
-        image: require('../../assets/nessima.png'),
+        image: require('../assets/nessima.png'),
     },
     {
         id: 2,
         title: 'I know',
         description:
             'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dicta quidem iusto accusamus voluptates consequatur minima reiciendis ab nesciunt sapiente minus sequi tenetur, eaque sunt neque? Excepturi accusamus facere officia.',
-        image: require('../../assets/TBTCheers.png'),
+        image: require('../assets/TBTCheers.png'),
     },
 ];
 
@@ -34,8 +34,9 @@ export default function Messages() {
         await setMessages([
             {
                 id: 2,
-                title: 'Message 2',
-                description: 'This is message 2',
+                title: 'This is the way',
+                description:
+                    'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 image: require('../assets/mosh.jpg'),
             },
         ]);

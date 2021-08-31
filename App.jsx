@@ -1,24 +1,11 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet } from 'react-native';
-
-import GlobalStyles from './src/config/GlobalStyles';
-import { Screen } from './src/components';
-import { EditListing } from './src/screens/Listings';
+import { NavigationContainer } from '@react-navigation/native';
+import AuthNavigator from './src/navigation/AuthNavigator';
 
 export default function App() {
     return (
-        <SafeAreaView style={GlobalStyles.droidSafeArea}>
-            <Screen style={styles.container}>
-                <EditListing />
-            </Screen>
-        </SafeAreaView>
+        <NavigationContainer>
+            <AuthNavigator />
+        </NavigationContainer>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        flexDirection: 'row',
-        backgroundColor: '#fff',
-    },
-});
